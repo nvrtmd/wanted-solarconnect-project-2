@@ -15,10 +15,13 @@ export const useTodo = () => {
 
   useEffect(() => {
     loadData();
+    console.log(todoState)
   }, []);
 
   useEffect(() => {
     saveData();
+    console.log(todoState)
+
   }, [todoState]);
 
   const incrementNextId = () => {
@@ -31,12 +34,14 @@ export const useTodo = () => {
 
   const removeTodo = (id: number) => {
     setTodoState((prevState) =>
-      prevState.filter((todo: Itodo) => todo.id === id)
+      prevState.filter((todo: Itodo) => todo.id !== id)
     );
   };
 
   const createTodo = (todo: Itodo) => {
-    const nextId = todoState.length + 1;
+    const lastIdIdx = todoState.length -1
+    const nextId = todoState[lastIdIdx].id + 1;
+
     setTodoState((prevState) =>
       prevState.concat({
         ...todo,

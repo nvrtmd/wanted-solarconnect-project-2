@@ -64,7 +64,7 @@ const TodoItem = ({ toggleTodo, removeTodo, todo }: TodoItemProps) => {
   const done = false;
   const handleToggle = () => {};
 
-  const handleRemove = () => {};
+  const handleRemove = () => {removeTodo(todo.id)};
 
   return (
     <TodoItemBlock>
