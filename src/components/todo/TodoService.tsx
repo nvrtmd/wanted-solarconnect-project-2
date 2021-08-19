@@ -15,13 +15,12 @@ export const useTodo = () => {
 
   useEffect(() => {
     loadData();
-    console.log(todoState)
+    console.log(todoState);
   }, []);
 
   useEffect(() => {
     saveData();
-    console.log(todoState)
-
+    console.log(todoState);
   }, [todoState]);
 
   const incrementNextId = () => {
@@ -39,13 +38,21 @@ export const useTodo = () => {
   };
 
   const createTodo = (todo: Itodo) => {
-    const lastIdIdx = todoState.length -1
+    let lastIdIdx = todoState.length - 1;
+    if (lastIdIdx < 0) {
+      setTodoState((prevState) =>
+        prevState.concat({
+          ...todo,
+          id: 1,
+        })
+      );
+      return;
+    }
     const nextId = todoState[lastIdIdx].id + 1;
-
     setTodoState((prevState) =>
       prevState.concat({
         ...todo,
-        id: nextId
+        id: nextId,
       })
     );
   };
@@ -70,6 +77,6 @@ export const useTodo = () => {
     incrementNextId,
     toggleTodo,
     removeTodo,
-    createTodo
+    createTodo,
   };
 };
