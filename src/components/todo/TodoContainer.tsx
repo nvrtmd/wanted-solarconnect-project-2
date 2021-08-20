@@ -13,8 +13,10 @@ const TodoContainer = () => {
     toggleTodo,
     removeTodo,
     createTodo,
+    removeDoneItems,
+    removeAll,
   } = useTodo();
-  
+
   return (
     <>
       <TodoTemplate>
@@ -29,7 +31,11 @@ const TodoContainer = () => {
           removeTodo={removeTodo}
           todos={todoState}
         />
-        <TodoFooter todos={todoState} />
+        <TodoFooter
+          todos={todoState}
+          removeDoneItems={removeDoneItems}
+          removeAll={removeAll}
+        />
       </TodoTemplate>
     </>
   );

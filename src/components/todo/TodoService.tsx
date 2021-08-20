@@ -41,6 +41,16 @@ export const useTodo = () => {
     );
   };
 
+  const removeDoneItems = (arr: any) => {
+    setTodoState((prevState) =>
+      prevState.filter((todo: Itodo) => arr.includes(todo))
+    );
+  };
+
+  const removeAll = () => {
+    setTodoState((prevState) => prevState.filter((todo: Itodo) => !todo.text));
+  };
+
   const createTodo = (todo: Itodo) => {
     let lastIdIdx = todoState.length - 1;
     if (lastIdIdx < 0) {
@@ -82,5 +92,7 @@ export const useTodo = () => {
     toggleTodo,
     removeTodo,
     createTodo,
+    removeDoneItems,
+    removeAll,
   };
 };

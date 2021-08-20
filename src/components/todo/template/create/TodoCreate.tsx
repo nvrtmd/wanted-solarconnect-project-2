@@ -98,7 +98,6 @@ const TodoCreate = ({
     e.preventDefault(); // 새로고침 방지
     if (value) {
       // 할일 미입력 시 item 추가되지 않도록
-      console.log(value);
       createTodo({
         id: nextId,
         text: value,
