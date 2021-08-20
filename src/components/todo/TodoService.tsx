@@ -16,12 +16,10 @@ export const useTodo = () => {
 
   useEffect(() => {
     loadData();
-    console.log(todoState);
   }, []);
 
   useEffect(() => {
     saveData();
-    console.log(todoState);
   }, [todoState]);
 
   const incrementNextId = () => {
@@ -30,15 +28,11 @@ export const useTodo = () => {
 
   const toggleTodo = (id: number) => {
     //@TODO
-    setTodoState((prevState) => [
-      ...prevState.filter((todo: Itodo) => todo.id !== id),
-      ...prevState
-        .filter((todo: Itodo) => todo.id === id)
-        .map((item) => {
-          item.done = !item.done;
-          return item;
-        }),
-    ]);
+    setTodoState((prevState) =>
+      prevState.map((item) => {
+        return item.id === id ? { ...item, done: !item.done } : item;
+      })
+    );
   };
 
   const removeTodo = (id: number) => {

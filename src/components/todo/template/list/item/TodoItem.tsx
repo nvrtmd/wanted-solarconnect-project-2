@@ -75,7 +75,7 @@ const TodoItem = ({ toggleTodo, removeTodo, todo }: TodoItemProps) => {
   const [done, setDone] = useState(false);
   const handleToggle = () => {
     toggleTodo(todo.id);
-    setDone(!todo.done);
+    setDone((prev) => !prev);
   };
 
   const handleRemove = () => {
