@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { CheckOutlined, DeleteOutlined } from "@ant-design/icons";
 import { Itodo } from "components/todo/TodoService";
 import React from "react";
@@ -42,9 +43,9 @@ const CheckCircle = styled.div<{ done: boolean }>`
     `}
 `;
 
-const Text = styled.div<{ done: boolean }>`
+const TodoText = styled.div<{ done: boolean }>`
   flex: 1;
-  font-size: 16px;
+  font-size: 18px;
   color: #119955;
   ${(props) =>
     props.done &&
@@ -54,6 +55,16 @@ const Text = styled.div<{ done: boolean }>`
     `}
 `;
 
+const DueDate = styled(TodoText)`
+  font-size: 13px;
+`;
+
+const TodoItemInfo = styled.div`
+  flex: 1;
+  font-size: 16px;
+  color: #119955;
+`;
+
 interface TodoItemProps {
   toggleTodo: (id: number) => void;
   removeTodo: (id: number) => void;
@@ -61,9 +72,10 @@ interface TodoItemProps {
 }
 
 const TodoItem = ({ toggleTodo, removeTodo, todo }: TodoItemProps) => {
-  const done = false;
+  const [done, setDone] = useState(false);
   const handleToggle = () => {
     toggleTodo(todo.id);
+    setDone(!todo.done);
   };
 
   const handleRemove = () => {
@@ -75,7 +87,10 @@ const TodoItem = ({ toggleTodo, removeTodo, todo }: TodoItemProps) => {
       <CheckCircle done={done} onClick={handleToggle}>
         {done && <CheckOutlined />}
       </CheckCircle>
-      <Text done={done}>{todo.text}</Text>
+      <TodoItemInfo>
+        <TodoText done={done}>{todo.text}</TodoText>
+        <DueDate done={done}>{todo.dueDate}</DueDate>
+      </TodoItemInfo>
       <Remove onClick={handleRemove}>
         <DeleteOutlined />
       </Remove>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { Itodo } from "components/todo/TodoService";
+import { DatePicker } from "antd";
 const CircleButton = styled.button<{ open: boolean }>`
   background: #33bb77;
   width: 50px;
@@ -57,27 +58,35 @@ interface TodoCreateProps {
 const TodoCreate = ({
   nextId,
   createTodo,
-  incrementNextId
+  incrementNextId,
 }: TodoCreateProps) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
+  const [dueDate, setDueDate] = useState("");
 
   const handleToggle = () => setOpen(!open);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValue(e.target.value);
+  const handleChangeDate = (date: any, dateString: string) => {
+    console.log(date, dateString);
+    if (dateString.length > 0) setDueDate("~" + dateString);
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // 새로고침 방지
-
-    createTodo({
-      id: nextId,
-      text: value,
-      done: false
-    });
-    incrementNextId(); // nextId 하나 증가
-
-    setValue(""); // input 초기화
-    setOpen(false); // open 닫기
+    if (value) {
+      // 할일 미입력 시 item 추가되지 않도록
+      console.log(value);
+      createTodo({
+        id: nextId,
+        text: value,
+        done: false,
+        dueDate: dueDate,
+      });
+      incrementNextId(); // nextId 하나 증가
+      setValue(""); // input 초기화
+      setOpen(false); // open 닫기
+    }
   };
 
   return (
@@ -90,6 +99,7 @@ const TodoCreate = ({
             onChange={handleChange}
             value={value}
           />
+          <DatePicker onChange={handleChangeDate} placeholder="Due date" />
 
           <CircleButton onClick={handleToggle} open={open}>
             <PlusCircleOutlined />

@@ -32,9 +32,6 @@ let initialTime = {
 
 const TodoHead = () => {
   //@TODO 현재 시간을 표시해야합니다.
-  const dayString = "Tuesday";
-  const dateString = "July 20, 2021";
-
   const [time, setTime] = useState(initialTime);
 
   useEffect(() => {
