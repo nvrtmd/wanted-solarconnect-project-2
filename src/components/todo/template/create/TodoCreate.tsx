@@ -3,10 +3,8 @@ import styled, { css } from "styled-components";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { Itodo } from "components/todo/TodoService";
 import { DatePicker } from "antd";
-import { Modal } from "antd";
-import moment from "moment";
 
-const CircleButton = styled.button<{ value: string }>`
+const CircleButton = styled.button<{ activate: string }>`
   background: #ababab;
   width: 50px;
   height: 50px;
@@ -25,7 +23,7 @@ const CircleButton = styled.button<{ value: string }>`
   justify-content: center;
   transition: all 0.4s ease 0s;
   ${(props) =>
-    props.value &&
+    props.activate &&
     css`
       cursor: pointer;
       &:hover {
@@ -81,12 +79,8 @@ const TodoCreate = ({
   createTodo,
   incrementNextId,
 }: TodoCreateProps) => {
-  const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const [dueDate, setDueDate] = useState("");
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const handleToggle = () => setOpen(!open);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValue(e.target.value);
@@ -98,18 +92,6 @@ const TodoCreate = ({
   const disabledDate = (current: any) => {
     const today = new Date();
     return current && current <= today.setHours(0, 0, 0, 0);
-  };
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -125,7 +107,6 @@ const TodoCreate = ({
       });
       incrementNextId(); // nextId 하나 증가
       setValue(""); // input 초기화
-      setOpen(false); // open 닫기
       setDueDate(""); // dueDate 초기화
     }
   };
@@ -145,18 +126,8 @@ const TodoCreate = ({
             disabledDate={disabledDate}
             placeholder="Due date"
           />
-          <Modal
-            title="Basic Modal"
-            visible={isModalVisible}
-            onOk={handleOk}
-            onCancel={handleCancel}
-          >
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-          </Modal>
 
-          <CircleButton onClick={handleToggle} value={value}>
+          <CircleButton activate={value}>
             <PlusCircleOutlined />
           </CircleButton>
         </InsertForm>
