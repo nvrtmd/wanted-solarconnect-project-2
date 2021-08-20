@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { Itodo } from "components/todo/TodoService";
 import { DatePicker } from "antd";
-const CircleButton = styled.button<{ open: boolean }>`
-  background: #33bb77;
+import { Modal } from "antd";
+import moment from "moment";
+
+const CircleButton = styled.button<{ value: string }>`
+  background: #ababab;
   width: 50px;
   height: 50px;
+  margin-top: 5px;
   align-items: center;
   justify-content: center;
   font-size: 60px;
@@ -19,6 +23,17 @@ const CircleButton = styled.button<{ open: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.4s ease 0s;
+  ${(props) =>
+    props.value &&
+    css`
+      cursor: pointer;
+      &:hover {
+        box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+        background: #33bb77;
+        color: #fff;
+      }
+    `}
 `;
 
 const InsertFormPositioner = styled.div`
@@ -43,9 +58,15 @@ const Input = styled.input`
   font-size: 21px;
   box-sizing: border-box;
   color: #119955;
+  transition: all 0.4s ease 0s;
+
   &::placeholder {
     color: #dddddd;
     font-size: 16px;
+  }
+  &:focus,
+  :hover {
+    border: 1px solid #33bb77;
   }
 `;
 
@@ -63,13 +84,32 @@ const TodoCreate = ({
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const [dueDate, setDueDate] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleToggle = () => setOpen(!open);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValue(e.target.value);
+
   const handleChangeDate = (date: any, dateString: string) => {
-    console.log(date, dateString);
     if (dateString.length > 0) setDueDate("~" + dateString);
+  };
+
+  const disabledDate = (current: any) => {
+    const today = new Date();
+    return current && current <= today.setHours(0, 0, 0, 0);
+  };
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -86,6 +126,7 @@ const TodoCreate = ({
       incrementNextId(); // nextId 하나 증가
       setValue(""); // input 초기화
       setOpen(false); // open 닫기
+      setDueDate(""); // dueDate 초기화
     }
   };
 
@@ -99,9 +140,23 @@ const TodoCreate = ({
             onChange={handleChange}
             value={value}
           />
-          <DatePicker onChange={handleChangeDate} placeholder="Due date" />
+          <DatePicker
+            onChange={handleChangeDate}
+            disabledDate={disabledDate}
+            placeholder="Due date"
+          />
+          <Modal
+            title="Basic Modal"
+            visible={isModalVisible}
+            onOk={handleOk}
+            onCancel={handleCancel}
+          >
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+          </Modal>
 
-          <CircleButton onClick={handleToggle} open={open}>
+          <CircleButton onClick={handleToggle} value={value}>
             <PlusCircleOutlined />
           </CircleButton>
         </InsertForm>
