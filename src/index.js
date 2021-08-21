@@ -4,6 +4,15 @@ import { createGlobalStyle } from "styled-components";
 import App from "./App";
 
 const GlobalStyle = createGlobalStyle`
+
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @keyframes DocumentPalette {
   0% {
     background: #90f1ef;
@@ -20,6 +29,10 @@ const GlobalStyle = createGlobalStyle`
   100% {
     background: #cddafd;
   }
+}
+
+* {
+  font-family: "GmarketSansMedium";
 }
 
   body {
