@@ -57,10 +57,10 @@ $ npm run start
 ## 🌞Preview
 <div style={display: flex;}>
   
-   <img src="https://user-images.githubusercontent.com/67324487/130318094-b8c78586-e3b9-4774-a46d-da8259d71e2e.gif" alt="drawing" width="450"/>
-   <img src="https://user-images.githubusercontent.com/67324487/130318096-45de9391-0487-4e30-9c83-5100b9a6ff30.gif" alt="drawing" width="450"/>
-   <img src="https://user-images.githubusercontent.com/67324487/130318193-ebf3e219-51c7-4d52-a0ac-f8e5e0e2df32.gif" alt="drawing" width="450"/>
-   <img src="https://user-images.githubusercontent.com/67324487/130318207-28f4ac69-28a4-422d-b82d-1a1b3e3f000a.gif" alt="drawing" width="450"/>
+   <img src="https://user-images.githubusercontent.com/67324487/130318094-b8c78586-e3b9-4774-a46d-da8259d71e2e.gif" alt="drawing" width="400"/>
+   <img src="https://user-images.githubusercontent.com/67324487/130318096-45de9391-0487-4e30-9c83-5100b9a6ff30.gif" alt="drawing" width="400"/>
+   <img src="https://user-images.githubusercontent.com/67324487/130318193-ebf3e219-51c7-4d52-a0ac-f8e5e0e2df32.gif" alt="drawing" width="400"/>
+   <img src="https://user-images.githubusercontent.com/67324487/130318207-28f4ac69-28a4-422d-b82d-1a1b3e3f000a.gif" alt="drawing" width="400"/>
 
   
 </div>
