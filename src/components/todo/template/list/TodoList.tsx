@@ -37,19 +37,24 @@ interface TodoListProps {
 
 const TodoList = ({ toggleTodo, removeTodo, todos }: TodoListProps) => {
   const [todoList, setTodoList] = useState(todos);
+  const [sort, setSort] = useState("전체 할일");
 
   useEffect(() => {
     setTodoList(todos);
   }, [todos]);
 
-  const handleSortChange = (e: any) => {
-    if (e.target.value === "미완료 할일") {
+  useEffect(() => {
+    if (sort === "미완료 할일") {
       setTodoList(() => todos.filter((item) => item.done === false));
-    } else if (e.target.value === "완료 할일") {
+    } else if (sort === "완료 할일") {
       setTodoList(() => todos.filter((item) => item.done === true));
     } else {
       setTodoList(todos);
     }
+  }, [sort, todos]);
+
+  const handleSortChange = (e: any) => {
+    setSort(e.target.value);
   };
 
   return (
