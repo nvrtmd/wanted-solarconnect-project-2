@@ -116,7 +116,7 @@ const TodoItem = ({ toggleTodo, removeTodo, todo }: TodoItemProps) => {
       </CheckCircle>
       <TodoItemInfo>
         <TodoText done={todo.done}>{todo.text}</TodoText>
-        <DueDate done={todo.done}>{todo.dueDate}</DueDate>
+        <DueDate done={todo.done}>~{todo.dueDate}</DueDate>
       </TodoItemInfo>
       <Remove onClick={handleRemove}>
         <DeleteOutlined />

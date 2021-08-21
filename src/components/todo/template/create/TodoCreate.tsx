@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { Itodo } from "components/todo/TodoService";
 import { DatePicker } from "antd";
+import moment from "moment";
 
 const CircleButton = styled.button<{ activate: string }>`
   background: #ababab;
@@ -79,18 +80,25 @@ const TodoCreate = ({
   createTodo,
   incrementNextId,
 }: TodoCreateProps) => {
+  const today = new Date();
+  const parsedToday =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+
   const [value, setValue] = useState("");
-  const [dueDate, setDueDate] = useState("");
+  const [dueDate, setDueDate] = useState(parsedToday);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValue(e.target.value);
 
   const handleChangeDate = (date: any, dateString: string) => {
-    if (dateString.length > 0) setDueDate("~" + dateString);
+    if (dateString.length > 0) {
+      setDueDate(dateString);
+      return;
+    }
+    setDueDate(parsedToday);
   };
 
   const disabledDate = (current: any) => {
-    const today = new Date();
     return current && current <= today.setHours(0, 0, 0, 0);
   };
 
@@ -106,7 +114,6 @@ const TodoCreate = ({
       });
       incrementNextId(); // nextId 하나 증가
       setValue(""); // input 초기화
-      setDueDate(""); // dueDate 초기화
     }
   };
 
