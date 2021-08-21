@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# [Assignment 5] 솔라커넥트 #2
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ☁Basic requirements
 
-## Available Scripts
+1. 시간 표시
+   - Todo List 화면에 현재 시간 표시
 
-In the project directory, you can run:
+2. 완료 목표일 
+   - 완료 목표일 입력 받음
+   - Todo 항목에 완료 목표일 기입
 
-### `yarn start`
+3. 항목 삭제
+   - Todo 항목 삭제 기능
+   
+4. 예외 처리 
+   - 현재 날짜 이전의 날짜를 완료 목표일로 설정 불가능
+   - Todo 내용 입력하지 않을 시 입력 불가능
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+5. 추가 기능
+   - 완료한 할일 삭제 및 모든 항목 삭제 기능
+   - 전체 할일, 미완료 할일, 완료 할일 모아 보기 기능 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<br>
 
-### `yarn test`
+## 🌥Built With
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TS](https://img.shields.io/badge/TypeScript-2f74c0?style=for-the-badge&logo=typescript&logoColor=white)
+![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/VisualStudioCode-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-### `yarn build`
+![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
+![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🌤Build Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+# install dependencies
+$ npm install
+# serve with hot reload at localhost:3000
+$ npm run start
+```
 
-### `yarn eject`
+<br>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## ☀Project Link
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<a href="https://solarconnect-todolist-project.netlify.app/" target="_blank">🌟Link🌟</a>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+<br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🌞Preview
+<div style={display: flex;}>
+  
+   <img src="https://user-images.githubusercontent.com/67324487/130318094-b8c78586-e3b9-4774-a46d-da8259d71e2e.gif" alt="drawing" width="450"/>
+   <img src="https://user-images.githubusercontent.com/67324487/130318096-45de9391-0487-4e30-9c83-5100b9a6ff30.gif" alt="drawing" width="450"/>
+   <img src="https://user-images.githubusercontent.com/67324487/130318193-ebf3e219-51c7-4d52-a0ac-f8e5e0e2df32.gif" alt="drawing" width="450"/>
+   <img src="https://user-images.githubusercontent.com/67324487/130318207-28f4ac69-28a4-422d-b82d-1a1b3e3f000a.gif" alt="drawing" width="450"/>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  
+</div>
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
