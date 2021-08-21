@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Itodo } from "components/todo/TodoService";
 import styled from "styled-components";
 import TodoItem from "./item/TodoItem";
@@ -36,11 +36,20 @@ interface TodoListProps {
 }
 
 const TodoList = ({ toggleTodo, removeTodo, todos }: TodoListProps) => {
-  const [sort, setSort] = useState("날짜 오름차순");
+  const [todoList, setTodoList] = useState(todos);
+
+  useEffect(() => {
+    setTodoList(todos);
+  }, [todos]);
 
   const handleSortChange = (e: any) => {
-    setSort(e.target.value);
-    console.log(sort);
+    if (e.target.value === "미완료 할일") {
+      setTodoList(() => todos.filter((item) => item.done === false));
+    } else if (e.target.value === "완료 할일") {
+      setTodoList(() => todos.filter((item) => item.done === true));
+    } else {
+      setTodoList(todos);
+    }
   };
 
   return (
@@ -48,12 +57,13 @@ const TodoList = ({ toggleTodo, removeTodo, todos }: TodoListProps) => {
       <SortBlock>
         <SortButton src="https://ifh.cc/g/CbWQQv.png" alt="" />
         <select onChange={handleSortChange}>
-          <option>날짜 오름차순</option>
-          <option>날짜 내림차순</option>
+          <option>전체 할일</option>
+          <option>미완료 할일</option>
+          <option>완료 할일</option>
         </select>
       </SortBlock>
-      {todos &&
-        todos.map((todo) => (
+      {todoList &&
+        todoList.map((todo) => (
           <TodoItem
             toggleTodo={toggleTodo}
             removeTodo={removeTodo}

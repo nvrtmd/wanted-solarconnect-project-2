@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { Itodo } from "components/todo/TodoService";
 import { DatePicker } from "antd";
-import moment from "moment";
 
 const CircleButton = styled.button<{ activate: string }>`
   background: #ababab;
